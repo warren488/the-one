@@ -70,6 +70,27 @@ public class MapRoute {
 		return this.stops;
 	}
 
+	public void insertStops(int start, int end, List<MapNode> newNodes){
+		if(this.index >= start && this.index <= end ){
+			System.out.println("cant change route while node is within bounds");
+			return;	
+		}
+		/** remove all current nodes within the range start -> end */
+		System.out.println("stops has "+ this.stops.size() + " elements, we want to start at "
+		 + start + " and end at "+ end);
+		 /** basically remove (start - end) number of elements starting at the start position */
+		for (int i = start; i <= end; i++) {
+			this.stops.remove(start);
+		}
+		/** add the new nodes from the starting index going forward */
+		int addIndex = start;
+		for (MapNode mapNode : newNodes) {
+			this.stops.add(addIndex, mapNode);
+			addIndex++;
+		}
+		
+	}
+
 	/**
 	 * Returns the next stop on the route (depending on the route mode)
 	 * @return the next stop on the route
@@ -133,6 +154,9 @@ public class MapRoute {
 		double yOffset = map.getOffset().getY();
 
 		if (type != CIRCULAR && type != PINGPONG) {
+			// for(StackTraceElement path : Thread.currentThread().getStackTrace()){
+			// 	System.out.println(path);
+			// }
 			throw new SettingsError("Invalid route type (" + type + ")");
 		}
 
