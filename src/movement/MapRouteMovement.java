@@ -41,14 +41,14 @@ public class MapRouteMovement extends MapBasedMovement implements
 	private DijkstraPathFinder pathFinder;
 
 	/** Prototype's reference to all routes read for the group */
-	private List<MapRoute> allRoutes = null;
+	protected List<MapRoute> allRoutes = null;
 	/** next route's index to give by prototype */
 	private Integer nextRouteIndex = null;
 	/** Index of the first stop for a group of nodes (or -1 for random) */
 	private int firstStopIndex = -1;
 
 	/** Route of the movement model's instance */
-	private MapRoute route;
+	protected MapRoute route;
 
 	/**
 	 * Creates a new movement model based on a Settings object's settings.
