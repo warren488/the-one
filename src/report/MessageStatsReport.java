@@ -30,6 +30,8 @@ public class MessageStatsReport extends Report implements MessageListener {
 
 	private int nrofDropped;
 	private int nrofRemoved;
+	private int nrofDroppedBus;
+	private int nrofRemovedBus;
 	private int nrofStarted;
 	private int nrofAborted;
 	private int nrofRelayed;
@@ -55,7 +57,9 @@ public class MessageStatsReport extends Report implements MessageListener {
 		this.rtt = new ArrayList<Double>();
 
 		this.nrofDropped = 0;
+		this.nrofDroppedBus = 0;
 		this.nrofRemoved = 0;
+		this.nrofRemovedBus = 0;
 		this.nrofStarted = 0;
 		this.nrofAborted = 0;
 		this.nrofRelayed = 0;
@@ -73,9 +77,15 @@ public class MessageStatsReport extends Report implements MessageListener {
 
 		if (dropped) {
 			this.nrofDropped++;
+			if(where.getgroupId().equals(new String("B"))){
+				this.nrofDroppedBus++;
+			}
 		}
 		else {
 			this.nrofRemoved++;
+			if(where.getgroupId().equals(new String("B"))){
+				this.nrofRemovedBus++;
+			}
 		}
 
 		this.msgBufferTime.add(getSimTime() - m.getReceiveTime());
@@ -113,6 +123,7 @@ public class MessageStatsReport extends Report implements MessageListener {
 
 
 	public void newMessage(Message m) {
+		// System.out.print(m.getId());
 		if (isWarmup()) {
 			addWarmupID(m.getId());
 			return;
@@ -161,6 +172,8 @@ public class MessageStatsReport extends Report implements MessageListener {
 			"\naborted: " + this.nrofAborted +
 			"\ndropped: " + this.nrofDropped +
 			"\nremoved: " + this.nrofRemoved +
+			"\ndropped by buses: " + this.nrofDroppedBus +
+			"\nremoved by buses: " + this.nrofRemovedBus +
 			"\ndelivered: " + this.nrofDelivered +
 			"\ndelivery_prob: " + format(deliveryProb) +
 			"\nresponse_prob: " + format(responseProb) +
