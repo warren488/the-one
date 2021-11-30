@@ -122,7 +122,7 @@ public abstract class Report {
 			outFileName = outDir + scenarioName +
 				"_" + this.getClass().getSimpleName();
 			if (outputInterval == -1) {
-				outFileName += OUT_SUFFIX; // no intervalled reports
+				outFileName += this.OUT_SUFFIX; // no intervalled reports
 			}
 
 		}

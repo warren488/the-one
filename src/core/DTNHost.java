@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import movement.BusMovement;
 import movement.MovementModel;
 import movement.Path;
 import routing.MessageRouter;
@@ -31,6 +32,7 @@ public class DTNHost implements Comparable<DTNHost> {
 	private double speed;
 	private double nextTimeToMove;
 	private String name;
+	private String groupId;
 	private List<MessageListener> msgListeners;
 	private List<MovementListener> movListeners;
 	private List<NetworkInterface> net;
@@ -59,6 +61,8 @@ public class DTNHost implements Comparable<DTNHost> {
 		this.location = new Coord(0,0);
 		this.address = getNextAddress();
 		this.name = groupId+address;
+		this.groupId = groupId;
+		System.out.println("group id prop" + this.groupId);
 		this.net = new ArrayList<NetworkInterface>();
 
 		for (NetworkInterface i : interf) {
@@ -234,6 +238,14 @@ public class DTNHost implements Comparable<DTNHost> {
 	 */
 	public int getNrofMessages() {
 		return this.router.getNrofMessages();
+	}
+
+	/**
+	 * Returns the groupId of the current node
+	 * @return the groupId of the current node
+	 */
+	public String getgroupId() {
+		return this.groupId;
 	}
 
 	/**
@@ -446,6 +458,13 @@ public class DTNHost implements Comparable<DTNHost> {
 		this.router.sendMessage(id, to);
 	}
 
+	/** change the route to a registered alternative route */
+	public void changeRoute(){
+		if(this.movement instanceof BusMovement){
+			System.out.println("changing route...");
+			((BusMovement)this.movement).changeRoute();
+		}
+	}
 	/**
 	 * Start receiving a message from another host
 	 * @param m The message

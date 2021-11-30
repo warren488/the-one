@@ -20,6 +20,7 @@ import core.Settings;
 public class ContactTimesReport extends Report implements ConnectionListener {
 	protected HashMap<ConnectionInfo, ConnectionInfo> connections;
 	private Vector<Integer> nrofContacts;
+	public final String OUT_SUFFIX = ".csv";
 
 	/** Granularity -setting id ({@value}). Defines how many simulated seconds
 	 * are grouped in one reported interval. */
@@ -107,6 +108,7 @@ public class ContactTimesReport extends Report implements ConnectionListener {
 
 	@Override
 	public void done() {
+		write("time" + "," + "contacts");
 
 		for (int i=0, n=this.nrofContacts.size(); i<n; i++) {
 			Integer contacts = nrofContacts.get(i);
@@ -114,7 +116,7 @@ public class ContactTimesReport extends Report implements ConnectionListener {
 				contacts = 0;
 			}
 			//     time(interval)             nrofContacts
-			write((i*this.granularity) + " " + contacts);
+			write((i*this.granularity) + "," + contacts);
 		}
 
 		super.done();
