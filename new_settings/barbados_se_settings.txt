@@ -1,0 +1,5 @@
+Scenario.country = bbse
+Scenario.nrofHostGroups = 3
+MovementModel.worldSize = 30000, 60000
+MapBasedMovement.nrofMapFiles = 1
+MapBasedMovement.mapFile1 = data/epsg27700/barbados_southeast/roads.wkt

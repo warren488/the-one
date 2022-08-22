@@ -1,0 +1,6 @@
+Scenario.name = %%Scenario.country%%-%%Group.router%%-%%btInterface.transmitRange%%m
+Scenario.aggFile = reports/btInterface/%%Group.router%%/%%Scenario.country%%
+Scenario.variable = [5;10;20;30;40;50;75;90;115;150;200]
+btInterface.transmitRange = [5;10;20;30;40;50;75;90;115;150;200]
+Report.reportDir = reports/btInterface
+Group.router = [SprayAndWaitRouter;ProphetRouter]

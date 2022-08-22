@@ -1,0 +1,5 @@
+Scenario.country = hs
+MapBasedMovement.nrofMapFiles = 1
+Scenario.nrofHostGroups = 3
+
+MapBasedMovement.mapFile1 = data/roads.wkt

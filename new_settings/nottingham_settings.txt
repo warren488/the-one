@@ -1,0 +1,5 @@
+Scenario.country = not
+Scenario.nrofHostGroups = 3
+MovementModel.worldSize = 20000, 20000
+MapBasedMovement.nrofMapFiles = 1
+MapBasedMovement.mapFile1 = data/epsg27700/nottingham/roads.wkt

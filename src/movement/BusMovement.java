@@ -38,9 +38,15 @@ public class BusMovement extends MapRouteMovement {
 		controlSystem.registerBus(this);
 		startMode = true;
 		stops = new LinkedList<Coord>();
+		// IMPORTANT !! this seems like a good place i could change how the bus stops are registered without 
+		// having to mess with the maps 
 		List<MapNode> stopNodes = super.getStops();
+		int count = 0;
 		for (MapNode node : stopNodes) {
-			stops.add(node.getLocation().clone());
+			if(count % 2 == 0){
+				stops.add(node.getLocation().clone());
+			} 
+			count++;
 		}
 		controlSystem.setBusStops(stops);
 	}
@@ -57,6 +63,7 @@ public class BusMovement extends MapRouteMovement {
 		startMode = true;
 	}
 
+	// IMPORTANT
 	@Override
 	public Coord getInitialLocation() {
 		return (super.getInitialLocation()).clone();

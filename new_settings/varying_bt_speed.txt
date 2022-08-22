@@ -1,0 +1,6 @@
+Scenario.name = %%Scenario.country%%-%%Group.router%%-%%btInterface.transmitSpeed%%
+Scenario.aggFile = reports/btInterface/%%Group.router%%/%%Scenario.country%%
+Scenario.variable = [250k; 500k; 750k; 1000k; 1250k]
+Report.reportDir = reports/btSpeed
+Group.router = [SprayAndWaitRouter;ProphetRouter]
+btInterface.transmitSpeed = [250k; 500k; 750k; 1000k; 1250k]

@@ -55,6 +55,8 @@ public abstract class Report {
 	public static final String INTERVALLED_FORMAT ="%04d" + OUT_SUFFIX;
 	/** The print writer used to write output. See {@link #write(String)} */
 	protected PrintWriter out;
+	/** The print writer used to write output. See {@link #writeAgg(String)} */
+	protected PrintWriter aggOut;
 	/** String value for values that could not be calculated */
 	public static final String NAN = "NaN";
 	private String prefix = "";
@@ -65,8 +67,10 @@ public abstract class Report {
 	private int lastOutputSuffix;
 	private double outputInterval;
 	private double lastReportTime;
+	private String aggregateOutputFilename;
 	private String outFileName;
 	private String scenarioName;
+	private String scenarioVariable;
 
 	/**
 	 * Constructor.
@@ -82,6 +86,15 @@ public abstract class Report {
 		Settings settings = new Settings();
 		scenarioName = settings.valueFillString(settings.getSetting(
 				SimScenario.SCENARIO_NS + "." +	SimScenario.NAME_S));
+
+		try {
+			scenarioVariable = settings.valueFillString(settings.getSetting(
+				SimScenario.SCENARIO_NS + "." +	"variable"));
+			aggregateOutputFilename = settings.valueFillString(settings.getSetting(
+				SimScenario.SCENARIO_NS + "." +	"aggFile"));
+		} catch (Exception e) {
+			//TODO: handle exception
+		}
 
 		settings = getSettings();
 
@@ -128,6 +141,11 @@ public abstract class Report {
 		}
 
 		checkDirExistence(outFileName);
+		try {
+			checkDirExistence(aggregateOutputFilename + ".agg");			
+		} catch (Exception e) {
+			//TODO: handle exception
+		}
 	}
 
 	/**
@@ -183,6 +201,7 @@ public abstract class Report {
 		}
 		else {
 			createOutput(outFileName);
+			createAggOutput(aggregateOutputFilename);
 		}
 	}
 
@@ -200,10 +219,30 @@ public abstract class Report {
 	}
 
 	/**
+	 * Creates a new output file in append mode
+	 * @param outFileName Name (&path) of the file to create
+	 */
+	private void createAggOutput(String outFileName) {
+		try {
+			this.aggOut = new PrintWriter(new FileWriter(outFileName + ".agg", true));
+		} catch (IOException e) {
+			throw new SimError("Couldn't open file '" + outFileName +
+					"' for report output\n" + e.getMessage(), e);
+		}
+	}
+
+	/**
 	 * Creates a number-suffixed output file with increasing number suffix
 	 * @param outFileName Prefix of the output file's name
 	 */
 	private void createSuffixedOutput(String outFileName) {
+		String suffix = String.format(INTERVALLED_FORMAT,
+				this.lastOutputSuffix);
+		createOutput(outFileName+suffix);
+		this.lastOutputSuffix++;
+	}
+
+	private void createSuffixedAggOutput(String outFileName) {
 		String suffix = String.format(INTERVALLED_FORMAT,
 				this.lastOutputSuffix);
 		createOutput(outFileName+suffix);
@@ -238,6 +277,13 @@ public abstract class Report {
 		out.println(prefix + txt);
 	}
 
+	protected void writeAgg(String txt) {
+		if (aggOut == null) {
+			init();
+		}
+		aggOut.println(prefix + txt);
+	}
+
 	/**
 	 * Formats a double value according to current precision setting (see
 	 * {@link #PRECISION_SETTING}) and returns it in a string.
@@ -262,6 +308,13 @@ public abstract class Report {
 	 */
 	protected String getScenarioName() {
 		return this.scenarioName;
+	}
+	/**
+	 * Returns the name of the scenario as read from the settings
+	 * @return the name of the scenario as read from the settings
+	 */
+	protected String getScenarioVariable() {
+		return this.scenarioVariable;
 	}
 
 	/**

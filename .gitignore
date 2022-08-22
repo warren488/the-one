@@ -4,6 +4,9 @@
 # Simulation report files
 *reports*/*.txt
 
+*reports/
+*old_reports/
+
 # Javadocs
 *.html
 doc/stylesheet.css

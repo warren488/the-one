@@ -9,6 +9,10 @@ Scenario.updateInterval = 0.1
 # 43200s == 12h
 Scenario.endTime = 43200
 
+Scenario.variable = 1
+Scenario.country = 1
+Scenario.aggFile = reports/btInterface/%%Group.router%%/%%Scenario.country%%
+
 ## Interface-specific settings:
 # type : which interface class the interface belongs to
 # For different types, the sub-parameters are interface-specific

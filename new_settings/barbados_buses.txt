@@ -1,0 +1,95 @@
+Scenario.country = bbn
+Scenario.nrofHostGroups = 9
+Events1.hosts = 0,29
+MovementModel.worldSize = 30000, 60000
+MapBasedMovement.nrofMapFiles = 1
+MapBasedMovement.mapFile1 = data/epsg27700/routes_container/roads.wkt
+
+
+Group.nrofHosts = 0
+
+Group1.busControlSystemNr = 1
+
+Group4.groupID = H
+Group4.speed = 7, 10
+Group4.waitTime = 10, 30
+Group4.nrofHosts = 3
+Group4.movementModel = BusMovement
+Group4.routeFile = data/epsg27700/bus_routes/holders_hill.wkt
+Group4.routeType = 2
+Group4.routeFirstStop = 0
+Group4.busControlSystemNr = 1
+#Group4.okMaps = 2
+
+Group9.groupID = H
+Group9.speed = 7, 10
+Group9.waitTime = 10, 30
+Group9.nrofHosts = 3
+Group9.movementModel = BusMovement
+Group9.routeFile = data/epsg27700/bus_routes/holders_hill.wkt
+Group9.routeType = 2
+Group9.routeFirstStop = 0
+Group9.busControlSystemNr = 1
+
+Group5.groupID = W
+Group5.speed = 4, 13
+Group5.waitTime = 5, 30
+Group5.nrofHosts = 7
+Group5.movementModel = BusMovement
+Group5.routeFile = data/epsg27700/bus_routes/wanstead.wkt
+Group5.routeType = 2
+Group5.routeFirstStop = 0
+Group5.busControlSystemNr = 2
+
+Group6.groupID = W
+Group6.speed = 4, 13
+Group6.waitTime = 5, 30
+Group6.nrofHosts = 7
+Group6.movementModel = BusMovement
+Group6.routeFile = data/epsg27700/bus_routes/wanstead.wkt
+Group6.routeDirection = reverse
+Group6.routeType = 2
+Group6.routeFirstStop = 0
+Group6.busControlSystemNr = 2
+
+Group7.groupID = S
+Group7.speed = 4, 13
+Group7.waitTime = 5, 30
+Group7.nrofHosts = 5
+Group7.movementModel = BusMovement
+Group7.routeFile = data/epsg27700/bus_routes/shop_hill2.wkt
+Group7.routeType = 2
+Group7.routeFirstStop = 0
+Group7.busControlSystemNr = 3
+
+Group8.groupID = _S
+Group8.speed = 4, 13
+Group8.waitTime = 5, 30
+Group8.nrofHosts = 5
+Group8.movementModel = BusMovement
+Group8.routeFile = data/epsg27700/bus_routes/shop_hill2.wkt
+Group8.routeType = 2
+Group8.routeFirstStop = 0
+Group8.routeDirection = reverse
+Group8.busControlSystemNr = 3
+
+GroupX.groupID = H
+GroupX.speed = 7, 10
+GroupX.waitTime = 10, 30
+GroupX.nrofHosts = 40
+GroupX.movementModel = BusMovement
+GroupX.routeFile = data/epsg27700/bus_routes/holders_hill.wkt
+GroupX.routeType = 2
+GroupX.busControlSystemNr = 1
+#GroupX.okMaps = 2
+
+
+##Group10.groupID = H
+#Group10.speed = 7, 10
+#Group10.waitTime = 10, 30
+##Group10.nrofHosts = 0
+#Group10.nrofHosts = 40
+#Group10.movementModel = MapRouteMovement
+#Group10.routeFile = data/epsg27700/bus_routes/holders_hill.wkt
+#Group10.routeType = 2
+#Group10.okMaps = 2

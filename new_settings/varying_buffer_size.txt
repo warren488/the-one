@@ -1,0 +1,6 @@
+Scenario.name = %%Scenario.country%%-%%Group.router%%-%%Group.bufferSize%%
+Scenario.aggFile = reports/buffer_size/%%Group.router%%/%%Scenario.country%%
+Scenario.variable = [41M;1M;2M;5M;10M;15M;20M;30M;50M;60M;75M]
+Group.router = [SprayAndWaitRouter;ProphetRouter]
+Report.reportDir = reports/buffer_size
+Group.bufferSize = [41M;1M;2M;5M;10M;15M;20M;30M;50M;60M;75M]

@@ -77,15 +77,9 @@ public class MessageStatsReport extends Report implements MessageListener {
 
 		if (dropped) {
 			this.nrofDropped++;
-			if(where.getgroupId().equals(new String("B"))){
-				this.nrofDroppedBus++;
-			}
 		}
 		else {
 			this.nrofRemoved++;
-			if(where.getgroupId().equals(new String("B"))){
-				this.nrofRemovedBus++;
-			}
 		}
 
 		this.msgBufferTime.add(getSimTime() - m.getReceiveTime());
@@ -166,29 +160,51 @@ public class MessageStatsReport extends Report implements MessageListener {
 				this.nrofResponseReqCreated;
 		}
 
-		String statsText = "created: " + this.nrofCreated +
-			"\nstarted: " + this.nrofStarted +
-			"\nrelayed: " + this.nrofRelayed +
-			"\naborted: " + this.nrofAborted +
-			"\ndropped: " + this.nrofDropped +
-			"\nremoved: " + this.nrofRemoved +
-			"\ndropped by buses: " + this.nrofDroppedBus +
-			"\nremoved by buses: " + this.nrofRemovedBus +
-			"\ndelivered: " + this.nrofDelivered +
-			"\ndelivery_prob: " + format(deliveryProb) +
-			"\nresponse_prob: " + format(responseProb) +
-			"\noverhead_ratio: " + format(overHead) +
-			"\nlatency_avg: " + getAverage(this.latencies) +
-			"\nlatency_med: " + getMedian(this.latencies) +
-			"\nhopcount_avg: " + getIntAverage(this.hopCounts) +
-			"\nhopcount_med: " + getIntMedian(this.hopCounts) +
-			"\nbuffertime_avg: " + getAverage(this.msgBufferTime) +
-			"\nbuffertime_med: " + getMedian(this.msgBufferTime) +
-			"\nrtt_avg: " + getAverage(this.rtt) +
-			"\nrtt_med: " + getMedian(this.rtt)
-			;
+		String statsText = "scen_variable," +
+			"created," +
+			"started," +
+			"relayed," +
+			"aborted," +
+			"dropped," +
+			"removed," +
+			"dropped by buses," +
+			"removed by buses," +
+			"delivered," +
+			"delivery_prob," +
+			"response_prob," +
+			"overhead_ratio," +
+			"latency_avg," +
+			"latency_med," +
+			"hopcount_avg," +
+			"hopcount_med," +
+			"buffertime_avg," +
+			"buffertime_med," +
+			"rtt_avg," +
+			"rtt_med\n" +
+			this.getScenarioVariable() +
+			"," + this.nrofCreated +
+			"," + this.nrofStarted +
+			"," + this.nrofRelayed +
+			"," + this.nrofAborted +
+			"," + this.nrofDropped +
+			"," + this.nrofRemoved +
+			"," + this.nrofDroppedBus +
+			"," + this.nrofRemovedBus +
+			"," + this.nrofDelivered +
+			"," + format(deliveryProb) +
+			"," + format(responseProb) +
+			"," + format(overHead) +
+			"," + getAverage(this.latencies) +
+			"," + getMedian(this.latencies) +
+			"," + getIntAverage(this.hopCounts) +
+			"," + getIntMedian(this.hopCounts) +
+			"," + getAverage(this.msgBufferTime) +
+			"," + getMedian(this.msgBufferTime) +
+			"," + getAverage(this.rtt) +
+			"," + getMedian(this.rtt);
 
 		write(statsText);
+		writeAgg(statsText);
 		super.done();
 	}
 

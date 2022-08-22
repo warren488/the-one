@@ -2,6 +2,10 @@
 Scenario.name = default_scenario
 Scenario.simulateConnections = true
 Scenario.updateInterval = 1
+Scenario.variable = 1
+Scenario.country = 1
+Scenario.aggFile = reports/btInterface/%%Group.router%%/%%Scenario.country%%
+
 # 43k ~= 12h
 Scenario.endTime = 700k
 

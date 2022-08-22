@@ -1,0 +1,11 @@
+Scenario.name = %%Scenario.country%%-%%Group.router%%-nodes%%Group.nrofHosts%%-msg_interval%%Events1.interval%%-r%%btInterface.transmitRange%%m-%%btInterface.transmitSpeed%%M_per_s-%%Group.bufferSize%%buffer
+Scenario.aggFile = reports/nd_msg/%%Group.router%%/%%Scenario.country%%
+Scenario.variable = [10,20;20,30;30,40;40,50]
+btInterface.transmitSpeed = 150k
+btInterface.transmitRange = 100
+Group.router = [SprayAndWaitRouter;SprayAndWaitRouter;SprayAndWaitRouter;SprayAndWaitRouter;ProphetRouter;ProphetRouter;ProphetRouter;ProphetRouter]
+Report.reportDir = reports/nd_msg
+Group.bufferSize = 49M
+Group.nrofHosts = [60;40;25;60;40;25;60;40;25;60;40;25;60;40;25;60;40;25;60;40;25;60;40;25]
+Events1.interval = [10,20;20,30;30,40;40,50]
+Events1.hosts = [0,179;0,119;0,74;0,179;0,119;0,74;0,179;0,119;0,74;0,179;0,119;0,74;0,179;0,119;0,74;0,179;0,119;0,74;0,179;0,119;0,74;0,179;0,119;0,74]

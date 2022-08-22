@@ -37,6 +37,23 @@ public class MapRouteMovement extends MapBasedMovement implements
 	 */
 	public static final String ROUTE_FIRST_STOP_S = "routeFirstStop";
 
+	/**
+	 * For ping-pong routes this allows specification of wether to start in the
+	 * forward or return direction
+	 */
+	public static final String ROUTE_DIRECTION_S = "routeDirection";
+
+
+	public static final String NR_OF_HOSTS = "nrofHosts";
+
+	
+	public int step = 0;
+
+
+	public Boolean reverse = false;
+	
+	public static int calls = 0;
+
 	/** the Dijkstra shortest path finder */
 	private DijkstraPathFinder pathFinder;
 
@@ -65,6 +82,18 @@ public class MapRouteMovement extends MapBasedMovement implements
 		if (this.nextRouteIndex >= this.allRoutes.size()) {
 			this.nextRouteIndex = 0;
 		}
+		
+		int nfOfHosts = settings.getInt(NR_OF_HOSTS);
+		// if we only have 1 stop then the equation results in divide by 0
+		if(nfOfHosts == 1){
+			step = route.getNrofStops() - 1;
+		} else if(nfOfHosts > 0){
+			step = route.getNrofStops() / nfOfHosts;
+		} 
+
+		if (settings.contains(ROUTE_DIRECTION_S) && settings.getSetting(ROUTE_DIRECTION_S).equals("reverse")) {
+			this.reverse = true;
+		}
 
 		if (settings.contains(ROUTE_FIRST_STOP_S)) {
 			this.firstStopIndex = settings.getInt(ROUTE_FIRST_STOP_S);
@@ -84,7 +113,15 @@ public class MapRouteMovement extends MapBasedMovement implements
 	protected MapRouteMovement(MapRouteMovement proto) {
 		super(proto);
 		this.route = proto.allRoutes.get(proto.nextRouteIndex).replicate();
+		proto.firstStopIndex = proto.firstStopIndex + proto.step > route.getNrofStops() ? 0 : (proto.firstStopIndex + proto.step) % route.getNrofStops() - 1 ;
 		this.firstStopIndex = proto.firstStopIndex;
+		System.out.println(proto.firstStopIndex);
+
+		if (proto.reverse == true) {
+			System.out.print("reversing");
+			this.route.reverseDirection();
+			this.reverse = true;
+		}
 
 		if (firstStopIndex < 0) {
 			/* set a random starting position on the route */
@@ -142,7 +179,6 @@ public class MapRouteMovement extends MapBasedMovement implements
 			return null;
 		}
 	}
-
 
 	@Override
 	public MapRouteMovement replicate() {
