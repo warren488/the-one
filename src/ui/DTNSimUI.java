@@ -4,6 +4,10 @@
  */
 package ui;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Vector;
 
 import report.Report;
@@ -29,6 +33,8 @@ public abstract class DTNSimUI {
 	 * are loaded.
 	 */
 	public static final String NROF_REPORT_S = "Report.nrofReports";
+	/** see {@link Report#REPORTDIR_SETTING} */
+	public static final String REPORTDIR_SETTING = "Report.reportDir";
 	/**
 	 * Report class name -setting id prefix ({@value}). Defines name(s) of
 	 * the report classes to load. Must be suffixed with numbers starting from
@@ -103,6 +109,24 @@ public abstract class DTNSimUI {
 			
 			this.scen = SimScenario.getInstance();
 
+			// log combined settings
+			String outDir = settings.getSetting(REPORTDIR_SETTING);
+			if (!outDir.endsWith("/")) {
+				outDir += "/";	// make sure dir ends with directory delimiter
+			}
+			String outFileName = outDir + "settings.txt";
+			checkDirExistence(outFileName);
+			PrintWriter out;
+			try {
+				out = new PrintWriter(new FileWriter(outFileName));
+			} catch (IOException e) {
+				throw new SimError("Couldn't open file '" + outFileName +
+						"' for report output\n" + e.getMessage(), e);
+			}
+			out.print(settings.toString().replace(", ", ",\n"));
+			out.close();
+
+			
 			// add reports
 			for (int i=1, n = settings.getInt(NROF_REPORT_S); i<=n; i++){
 				String reportClass = settings.getSetting(REPORT_S + i);
@@ -157,4 +181,46 @@ public abstract class DTNSimUI {
 
 		this.reports.add(r);
 	}
+
+
+/**
+	 * Checks that a directory for a file exists or creates the directory
+	 * if it didn't exist.
+	 * @param outFileName Name of the file
+	 */
+	private void checkDirExistence(String outFileName) {
+		File outFile = new File(outFileName);
+		File outDir = outFile.getParentFile();
+
+		if (outDir != null && !outDir.exists()) {
+			if (!createDirs(outDir)) {
+				throw new SimError("Couldn't create report directory '" +
+						outDir.getAbsolutePath()+"'");
+			}
+		}
+	}
+
+	/**
+	 * Recursively creates a directory structure
+	 * @param directory The directory to create
+	 * @return True if the creation succeeded, false if not
+	 */
+	private boolean createDirs(File directory) {
+		if (directory==null) {
+			return true;
+		}
+		if (directory.exists()) {
+			return true;
+		} else {
+			if (!createDirs(directory.getParentFile())) {
+				return false;
+			}
+			if (!directory.mkdir()) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+	}
+
 }

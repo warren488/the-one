@@ -39,8 +39,12 @@ public class BusMovement extends MapRouteMovement {
 		startMode = true;
 		stops = new LinkedList<Coord>();
 		List<MapNode> stopNodes = super.getStops();
+		int count = 0;
 		for (MapNode node : stopNodes) {
-			stops.add(node.getLocation().clone());
+			if(count % 2 == 0){
+				stops.add(node.getLocation().clone());
+			} 
+			count++;
 		}
 		controlSystem.setBusStops(stops);
 	}
@@ -57,6 +61,7 @@ public class BusMovement extends MapRouteMovement {
 		startMode = true;
 	}
 
+	// IMPORTANT
 	@Override
 	public Coord getInitialLocation() {
 		return (super.getInitialLocation()).clone();

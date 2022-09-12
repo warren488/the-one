@@ -71,9 +71,15 @@ public class BufferOccupancyReport extends Report implements UpdateListener {
 	private void printLine(List<DTNHost> hosts) {
 		double bufferOccupancy = 0.0;
 		double bo2 = 0.0;
+		int nrOfMessages = 0;
+		int highestMsgCount = 0;
 
 		for (DTNHost h : hosts) {
 			double tmp = h.getBufferOccupancy();
+			nrOfMessages += h.getNrofMessages();
+			if(h.getNrofMessages() > highestMsgCount){
+				highestMsgCount = h.getNrofMessages();
+			}
 			tmp = (tmp<=100.0)?(tmp):(100.0);
 			bufferOccupancy += tmp;
 			bo2 += (tmp*tmp)/100.0;
@@ -81,9 +87,10 @@ public class BufferOccupancyReport extends Report implements UpdateListener {
 
 		double E_X = bufferOccupancy / hosts.size();
 		double Var_X = bo2 / hosts.size() - (E_X*E_X)/100.0;
+		double avgMessages = (double)nrOfMessages / hosts.size();
 
 		String output = format(SimClock.getTime()) + " " + format(E_X) + " " +
-			format(Var_X);
+			format(Var_X) + " " + format(nrOfMessages) + " " + format(avgMessages) + " " + format(highestMsgCount);
 		write(output);
 	}
 

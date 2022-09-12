@@ -338,19 +338,19 @@ public class MapBasedMovement extends MovementModel implements SwitchableMovemen
 			}
 		}
 
-		if (visited.size() != nodes.size()) { // some node couldn't be reached
-			MapNode disconnected = null;
-			for (MapNode n : nodes) { // find an example node
-				if (!visited.contains(n)) {
-					disconnected = n;
-					break;
-				}
-			}
-			throw new SettingsError("SimMap is not fully connected. Only " +
-					visited.size() + " out of " + nodes.size() + " map nodes " +
-					"can be reached from " + firstNode + ". E.g. " +
-					disconnected + " can't be reached");
-		}
+		// if (visited.size() != nodes.size()) { // some node couldn't be reached
+		// 	MapNode disconnected = null;
+		// 	for (MapNode n : nodes) { // find an example node
+		// 		if (!visited.contains(n)) {
+		// 			disconnected = n;
+		// 			break;
+		// 		}
+		// 	}
+		// 	throw new SettingsError("SimMap is not fully connected. Only " +
+		// 			visited.size() + " out of " + nodes.size() + " map nodes " +
+		// 			"can be reached from " + firstNode + ". E.g. " +
+		// 			disconnected + " can't be reached");
+		// }
 	}
 
 	/**

@@ -59,6 +59,13 @@ public class MapRoute {
 	}
 
 	/**
+	 * reverses the natural direction of the path provided only, DOES NOT TOGGLE DIRECTION
+	 */
+	public void reverseDirection() {
+		this.comingBack = true;
+	}
+
+	/**
 	 * Returns the number of stops on this route
 	 * @return the number of stops on this route
 	 */
