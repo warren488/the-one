@@ -355,6 +355,39 @@ public abstract class Report {
 	}
 
 	/**
+	 * Returns the average of double values stored in a List or 0 for
+	 * empty lists.
+	 * @param values The list of double values
+	 * @return average of double values stored in the List in a formatted String
+	 */
+	public Double calculateAverage(List<Double> values) {
+		double sum = 0;
+		if (values.size() == 0) {
+			return 0.0;
+		}
+
+		for (double dValue : values) {
+			sum += dValue;
+		}
+
+		return sum / values.size();
+	}
+
+	/**
+	 * Returns the average of integer values stored in a List
+	 * @param values The list of values
+	 * @return average of integer values stored in the List or NaN for
+	 * empty lists.
+	 */
+	public Double calculateIntAverage(List<Integer> values) {
+		List<Double> dValues = new ArrayList<Double>(values.size());
+		for (int i : values) {
+			dValues.add((double)i);
+		}
+		return calculateAverage(dValues);
+	}
+
+	/**
 	 * Returns the average of integer values stored in a List
 	 * @param values The list of values
 	 * @return average of integer values stored in the List or "NaN" for

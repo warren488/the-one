@@ -162,7 +162,7 @@ public class MessageStatsReport extends Report implements MessageListener {
 				this.nrofResponseReqCreated;
 		}
 
-		String statsText = "scen_variable," +
+		String statsText = 
 			"created," +
 			"started," +
 			"relayed," +
@@ -184,8 +184,7 @@ public class MessageStatsReport extends Report implements MessageListener {
 			"buffertime_med," +
 			"rtt_avg," +
 			"rtt_med\n" +
-			this.getScenarioVariable() +
-			"," + this.nrofCreated +
+			 this.nrofCreated +
 			"," + this.nrofStarted +
 			"," + this.nrofRelayed +
 			"," + this.nrofAborted +
