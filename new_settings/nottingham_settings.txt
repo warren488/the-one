@@ -1,0 +1,5 @@
+Scenario.country = not
+Scenario.nrofHostGroups = 3
+MovementModel.worldSize = 15000, 15000
+MapBasedMovement.nrofMapFiles = 1
+MapBasedMovement.mapFile1 = data/epsg27700/8000/notts_roads.wkt

@@ -1,0 +1,5 @@
+Scenario.country = bbse
+Scenario.nrofHostGroups = 3
+MovementModel.worldSize = 30000,30000
+MapBasedMovement.nrofMapFiles = 1
+MapBasedMovement.mapFile1 = data/epsg27700/8000/bbse_roads.wkt

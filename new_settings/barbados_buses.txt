@@ -1,0 +1,165 @@
+Scenario.country = onlybus
+Scenario.nrofHostGroups = 17
+Events1.hosts = 0,29
+MovementModel.worldSize = 30000,60000
+MapBasedMovement.nrofMapFiles = 1
+MapBasedMovement.mapFile1 =  data/epsg27700/bus_routes/all_bus_roads.wkt
+Report.nrofReports = 8
+
+# so we only have buses
+Group.nrofHosts = 0
+Group1.nrofHosts = 0
+Group2.nrofHosts = 0
+Group3.nrofHosts = 0
+
+Group1.busControlSystemNr = 1
+
+Group4.groupID = H
+Group4.speed = 7,10
+Group4.waitTime = 10,30
+Group4.nrofHosts = 3
+Group4.movementModel = BusMovement
+Group4.routeFile = data/epsg27700/bus_routes/holders_hill.wkt
+Group4.routeType = 2
+Group4.routeFirstStop = 0
+Group4.busControlSystemNr = 1
+#Group4.okMaps = 2
+
+Group5.groupID = H
+Group5.speed = 7,10
+Group5.waitTime = 10,30
+Group5.nrofHosts = 3
+Group5.movementModel = BusMovement
+Group5.routeFile = data/epsg27700/bus_routes/holders_hill.wkt
+Group5.routeType = 2
+Group5.routeFirstStop = 0
+Group5.routeDirection = reverse
+Group5.busControlSystemNr = 1
+
+Group6.groupID = W
+Group6.speed = 4,13
+Group6.waitTime = 5,30
+Group6.nrofHosts = 7
+Group6.movementModel = BusMovement
+Group6.routeFile = data/epsg27700/bus_routes/wanstead.wkt
+Group6.routeType = 2
+Group6.routeFirstStop = 0
+Group6.busControlSystemNr = 2
+
+Group7.groupID = W
+Group7.speed = 4,13
+Group7.waitTime = 5,30
+Group7.nrofHosts = 7
+Group7.movementModel = BusMovement
+Group7.routeFile = data/epsg27700/bus_routes/wanstead.wkt
+Group7.routeDirection = reverse
+Group7.routeType = 2
+Group7.routeFirstStop = 0
+Group7.busControlSystemNr = 2
+
+Group8.groupID = S
+Group8.speed = 4,13
+Group8.waitTime = 5,30
+Group8.nrofHosts = 5
+Group8.movementModel = BusMovement
+Group8.routeFile = data/epsg27700/bus_routes/shop_hill2.wkt
+Group8.routeType = 2
+Group8.routeFirstStop = 0
+Group8.busControlSystemNr = 3
+
+Group9.groupID = S
+Group9.speed = 4,13
+Group9.waitTime = 5,30
+Group9.nrofHosts = 5
+Group9.movementModel = BusMovement
+Group9.routeFile = data/epsg27700/bus_routes/shop_hill2.wkt
+Group9.routeType = 2
+Group9.routeFirstStop = 0
+Group9.routeDirection = reverse
+Group9.busControlSystemNr = 3
+
+
+Group10.groupID = SP
+Group10.speed = 4,13
+Group10.waitTime = 5,30
+Group10.nrofHosts = 10
+Group10.movementModel = BusMovement
+Group10.routeFile = data/epsg27700/bus_routes/speightstown.wkt
+Group10.routeType = 2
+Group10.routeFirstStop = 0
+Group10.busControlSystemNr = 3
+
+Group11.groupID = SP
+Group11.speed = 4,13
+Group11.waitTime = 5,30
+Group11.nrofHosts = 10
+Group11.movementModel = BusMovement
+Group11.routeFile = data/epsg27700/bus_routes/speightstown.wkt
+Group11.routeType = 2
+Group11.routeFirstStop = 0
+Group11.routeDirection = reverse
+Group11.busControlSystemNr = 3
+
+
+Group12.groupID = SA
+Group12.speed = 4,13
+Group12.waitTime = 5,30
+Group12.nrofHosts = 3
+Group12.movementModel = BusMovement
+Group12.routeFile = data/epsg27700/bus_routes/st_albans.wkt
+Group12.routeType = 2
+Group12.routeFirstStop = 0
+Group12.busControlSystemNr = 3
+
+Group13.groupID = SA
+Group13.speed = 4,13
+Group13.waitTime = 5,30
+Group13.nrofHosts = 2
+Group13.movementModel = BusMovement
+Group13.routeFile = data/epsg27700/bus_routes/st_albans.wkt
+Group13.routeType = 2
+Group13.routeFirstStop = 0
+Group13.routeDirection = reverse
+Group13.busControlSystemNr = 3
+
+Group14.groupID = RH
+Group14.speed = 4,13
+Group14.waitTime = 5,30
+Group14.nrofHosts = 4
+Group14.movementModel = BusMovement
+Group14.routeFile = data/epsg27700/bus_routes/rock_hall.wkt
+Group14.routeType = 2
+Group14.routeFirstStop = 0
+Group14.busControlSystemNr = 3
+
+Group15.groupID = RH
+Group15.speed = 4,13
+Group15.waitTime = 5,30
+Group15.nrofHosts = 3
+Group15.movementModel = BusMovement
+Group15.routeFile = data/epsg27700/bus_routes/rock_hall.wkt
+Group15.routeType = 2
+Group15.routeFirstStop = 0
+Group15.routeDirection = reverse
+Group15.busControlSystemNr = 3
+
+Group16.groupID = RD
+Group16.speed = 4,13
+Group16.waitTime = 5,30
+Group16.nrofHosts = 3
+Group16.movementModel = BusMovement
+Group16.routeFile = data/epsg27700/bus_routes/rock_dundo.wkt
+Group16.routeType = 2
+Group16.routeFirstStop = 0
+Group16.busControlSystemNr = 3
+
+Group17.groupID = RD
+Group17.speed = 4,13
+Group17.waitTime = 5,30
+Group17.nrofHosts = 2
+Group17.movementModel = BusMovement
+Group17.routeFile = data/epsg27700/bus_routes/rock_dundo.wkt
+Group17.routeType = 2
+Group17.routeFirstStop = 0
+Group17.routeDirection = reverse
+Group17.busControlSystemNr = 3

@@ -1,0 +1,7 @@
+Scenario.name = %%MovementModel.rngSeed%%/%%Scenario.country%%-%%Group.router%%-%%Group2.nrofHosts%%
+Scenario.aggFile = reports/nd/%%Group.router%%/%%Scenario.country%%
+Scenario.variable = [40;80;160;240;320;480]
+Group.router = [SprayAndWaitRouter;ProphetRouter]
+Report.reportDir = reports/nd
+Group2.nrofHosts = [40;80;160;240;320;480;700]
+Events1.hosts = [40,79;40,119;40,199;40,279;40,359;40,519;40,739]

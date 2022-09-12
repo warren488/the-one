@@ -1,0 +1,8 @@
+Scenario.name = %%MovementModel.rngSeed%%/%%Scenario.country%%-%%Group.router%%-%%SprayAndWaitRouter.nrofCopies%%-%%SprayAndWaitRouter.binaryMode%%
+Scenario.aggFile = reports/SaWCopies/%%Group.router%%/%%Scenario.country%%
+Scenario.variable = [2;4;6;8;16;24;32]
+btInterface.transmitRange = 40
+Report.reportDir = reports/SaWCopies
+Group.router = SprayAndWaitRouter
+SprayAndWaitRouter.nrofCopies = [2;4;6;8;16;24;32]
+SprayAndWaitRouter.binaryMode = [true;false]

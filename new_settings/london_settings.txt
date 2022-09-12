@@ -1,0 +1,5 @@
+Scenario.country = lon
+Scenario.nrofHostGroups = 3
+MovementModel.worldSize = 18000, 18000
+MapBasedMovement.nrofMapFiles = 1
+MapBasedMovement.mapFile1 = data/epsg27700/8000/london_roads.wkt

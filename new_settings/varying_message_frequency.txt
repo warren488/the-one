@@ -1,0 +1,6 @@
+Scenario.name = %%MovementModel.rngSeed%%/%%Scenario.country%%-%%Group.router%%-%%Events1.interval%%
+Scenario.aggFile = reports/msgfr/%%Group.router%%/%%Scenario.country%%
+Scenario.variable = [10,20;20,30;30,40;40,50]
+Group.router = [SprayAndWaitRouter;ProphetRouter]
+Report.reportDir = reports/msgfr
+Events1.interval = [5,15;15,25;25,35;35,45;45,55]

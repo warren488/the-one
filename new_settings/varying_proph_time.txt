@@ -1,0 +1,7 @@
+Scenario.name = %%MovementModel.rngSeed%%/%%Scenario.country%%-%%Group.router%%-%%ProphetRouter.secondsInTimeUnit%%
+Scenario.aggFile = reports/Prophtime/%%Group.router%%/%%Scenario.country%%
+Scenario.variable = [5;10;15;30;45;60;75]
+btInterface.transmitRange = 40
+Report.reportDir = reports/Prophtime
+Group.router = ProphetRouter
+ProphetRouter.secondsInTimeUnit = [1;5;10;15;30;45;60;75]

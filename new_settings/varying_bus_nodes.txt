@@ -1,0 +1,29 @@
+Scenario.name = %%MovementModel.rngSeed%%/%%Scenario.country%%-%%Group.router%%-%%Group.nrofHosts%%
+Scenario.aggFile = reports/nd/%%Group.router%%/%%Scenario.country%%
+Scenario.variable = [67;134;201;268;335;401]
+Group.router = [SprayAndWaitRouter;SprayAndWaitRouter;SprayAndWaitRouter;SprayAndWaitRouter;SprayAndWaitRouter;SprayAndWaitRouter;ProphetRouter;ProphetRouter;ProphetRouter;ProphetRouter;ProphetRouter;ProphetRouter]
+Report.reportDir = reports/nd
+
+#this is used only for the file name but its overridden for every group
+Group.nrofHosts = [67;134;201;268;335;401]
+Group11.nrofHosts = [10;20;30;40;50;60]
+Group12.nrofHosts = [3;6;9;12;15;18]
+Group13.nrofHosts = [2;4;6;8;10;12]
+Group17.nrofHosts = [2;4;6;8;10;12]
+Group16.nrofHosts = [3;6;9;12;15;18]
+Group15.nrofHosts = [3;6;9;12;15;18]
+Group14.nrofHosts = [4;8;12;16;20;24]
+Group10.nrofHosts = [10;20;30;40;50;60]
+Group9.nrofHosts = [5;10;15;20;25;30]
+Group8.nrofHosts = [5;10;15;20;25;30]
+Group7.nrofHosts = [7;14;21;28;35;42]
+Group6.nrofHosts = [7;14;21;28;35;42]
+Group5.nrofHosts = [3;6;9;12;15;18]
+Group4.nrofHosts = [3;6;9;12;15;18]
+Group3.nrofHosts = [0;0;0;0;0;0]
+Group2.nrofHosts = [0;0;0;0;0;0]
+Group1.nrofHosts = [0;0;0;0;0;0]
+
+Events1.hosts = [0,66;0,133;0,200;0,267;0,334;0,401]
+
+MovementModel.rngSeed = [1;1;1;1;1;1;5;5;5;5;5;5;10;10;10;10;10;10]
